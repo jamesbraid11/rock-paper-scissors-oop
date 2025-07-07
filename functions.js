@@ -12,7 +12,7 @@ class HumanPlayer extends Player {
     super(name, choice);
   }
   makeChoice() {
-    let input = prompt("Choose rock, paper, or scissors:").toLowerCase();
+    let input = prompt("Choose rock, paper, or scissors: ").toLowerCase();
     const validChoices = ["rock", "paper", "scissors"];
     while (!validChoices.includes(input)) {
       input = prompt(
@@ -87,17 +87,18 @@ class Game {
       console.log("It's a tie!");
     }
 
-    let restartGame = prompt("Would you like to play aagain? (yes / no) : ").toLowerCase()
-    const newGameChoices = ["yes", "no"]
+    let restartGame = prompt("Would you like to play again? (yes / no) : ").toLowerCase()
+    const newGameChoices = ["yes", "y", "no", "n"]
     while (!newGameChoices.includes(restartGame)) {
-        restartGame = prompt("invalid choice, please type yes or no").toLowerCase()
+        restartGame = prompt("invalid choice, please type yes or no ").toLowerCase()
     }
-    if (restartGame === "yes") {
+    if (restartGame === "yes" || restartGame === "y") {
         playRound()
-    } else {
-        console.log("Whatevs bruv")
+    } else if (restartGame === "no" || restartGame === "n")  {
+        console.log("Whatevs, bruv");
+        process.exit();
+        }
     }
-  }
 }
 
 function playRound() {

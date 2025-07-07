@@ -16,7 +16,7 @@ class HumanPlayer extends Player {
     const validChoices = ["rock", "paper", "scissors"];
     while (!validChoices.includes(input)) {
       input = prompt(
-        "Invalid choice. Please choose rock, paper, or scissors:"
+        "Invalid choice. Please choose rock, paper, or scissors: "
       ).toLowerCase();
     }
     this.choice = input;
@@ -38,7 +38,7 @@ class Game {
   constructor(humanScore, computerScore, rounds) {
     this.humanScore = humanScore;
     this.computerScore = computerScore;
-    this.moves = rounds;
+    this.rounds = rounds;
   }
 
   determineWinner(HumanPlayer, ComputerPlayer) {
@@ -60,13 +60,13 @@ class Game {
 
   play() {
     const human = new HumanPlayer("You", "");
-    const computer = new ComputerPlayer();
+    const computer = new ComputerPlayer("Computer", "");
 
     for (let i = 0; i < this.rounds; i++) {
       console.log(`\nRound ${i + 1}`);
-      human.makeChoice;
-      computer.makeChoice;
-      console.log(`You choose: ${human.choice}`);
+      human.makeChoice();
+      computer.makeChoice();
+      console.log(`You chose: ${human.choice}`);
       console.log(`Computer chose: ${computer.choice}`);
 
       const winner = this.determineWinner(human, computer);
@@ -87,7 +87,7 @@ class Game {
       console.log("It's a tie!");
     }
 
-    let restartGame = prompt("Would you like to play aagain? (yes / no)").toLowerCase()
+    let restartGame = prompt("Would you like to play aagain? (yes / no) : ").toLowerCase()
     const newGameChoices = ["yes", "no"]
     while (!newGameChoices.includes(restartGame)) {
         restartGame = prompt("invalid choice, please type yes or no").toLowerCase()
